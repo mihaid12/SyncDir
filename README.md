@@ -61,13 +61,13 @@ sh run_example_clt.sh
 
 III. User defined launch:
 
-- Server: ./SyncDir_Server <port> <dir_path_srv>
+- Server: ./SyncDir_Server /<port> <dir_path_srv>
 
 - Client: ./SyncDir_Client <port> <ip_address> <dir_path_clt> <shutdown_time>
 
 Where:
  
-- <port> Is the port that the server waits on for client connections. The same port has to be passed as argument for both the client and the server. It is recommended to set a port between 49152 and 65535.
+- /<port> Is the port that the server waits on for client connections. The same port has to be passed as argument for both the client and the server. It is recommended to set a port between 49152 and 65535.
 - <ip_address> Is the human readable "x.x.x.x" IP address of the server interface that the clients should connect to.
 - <dir_path_srv> Is the path where the server performs the content updates received from the client. It has to be different from the dir_path_clt, if both server and client run on the same local machine;
 - <dir_path_clt> Is the path of the partition/directory which the client monitors for changes.
