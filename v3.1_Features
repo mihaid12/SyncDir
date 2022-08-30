@@ -11,5 +11,14 @@ Current Implementation Features:
 - Redundant transfer avoidance: Avoiding transfers of files that are already on the server. This is done by recording hash codes of all the file content on the server and checking for matches before any file transfer.
 - Pre-commit filtered update: When the stage of event aggregation is performed, all the SyncDir client structures are updated independently, and the modifications are stored separately for every file. This creates the possibility of filtering the updates (w.r.t. server filters) or snapshot-ing certain modified directories, if desired.
 - Symbolic link detection, treatment and validation.
+- Fault tolerance for corrupted files or files overwritten while in transfer.
 
+Induced features:
+Event aggregation + Side-events treshold ==> The usage of these two features together enhanced the file transfer and execution time in the case of temporary or volatile files (e.g. backup files) created usually by text editors, while editing files.
+
+Possible SyncDir updates (v.3.2):
+- Capture of FIL_IN_ATTRIB, DIR_IN_ATTRIB related operations.
+- Enhancing the SyncDir server data structure to preserve a subset of all the file paths with the same hash code, not only the most recent file path. 
+- SSL support. 
+- GUI, for graphical interraction. 
 
