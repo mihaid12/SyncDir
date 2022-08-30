@@ -1,2 +1,15 @@
 SyncDir Tool. Features. V3.1.
 
+Current Implementation Features:
+(v.3.1)
+
+- Recursive deep synchronization: Quick transfer of file changes, for large directory trees / partitions.
+- Capture of operations such as FIL_MOVED_FROM, DIR_MOVED_FROM, FIL_MOVED_TO, DIR_MOVED_TO, FIL_MOVE, DIR_MOVE, FIL_DELETE, DIR_DELETE, FIL_CREATE, DIR_CREATE, MODIFY.
+- Event aggregation: Building event records for every file and relations between them. Most of the aggregation of one file's events takes place in the same record, but it can affect other records if a relation was established in between. Since a lot of successive file operations can occur in the system, the event aggregation also includes a simplification/reduction of the event file records. 
+- Minimum time before server update: Event aggregation feature creates the possibility of setting a waiting time before the server is synchronized with the client. This is because aggregating events offers the benefit of delayed synchronization (i.e. not requiring instant or immediate server update).
+- Side-events treshold: Time treshold that SyncDir client may use to wait for side-events while processing the kernel event queue. An application of this feature is "cut & paste" operations (where the new file location can appear later on in a side-event), or a "delete" operation made by mistake, where the "undo" performed by the user would be quickly taken into account and no redundant transfer is thereby spent.
+- Redundant transfer avoidance: Avoiding transfers of files that are already on the server. This is done by recording hash codes of all the file content on the server and checking for matches before any file transfer.
+- Pre-commit filtered update: When the stage of event aggregation is performed, all the SyncDir client structures are updated independently, and the modifications are stored separately for every file. This creates the possibility of filtering the updates (w.r.t. server filters) or snapshot-ing certain modified directories, if desired.
+- Symbolic link detection, treatment and validation.
+
+
